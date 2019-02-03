@@ -1,0 +1,26 @@
+{
+  "name": "@app-sdk/advance-components",
+  "version": "1.0.0",
+  "description": "advance components composed app-sd/components",
+  "main": "index.js",
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/saeedPadyab/advance-components.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/saeedPadyab/advance-components/issues"
+  },
+  "homepage": "https://github.com/saeedPadyab/advance-components#readme",
+  "dependencies": {
+    "@app-sdk/components": "^1.0.8",
+    "@app-sdk/services": "^1.0.10"
+  }
+}
