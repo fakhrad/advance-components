@@ -12,6 +12,7 @@ import { languageManager, navManager } from "@app-sdk/services";
 export default class ImageActionPicker extends React.Component {
   constructor(props) {
     super(props);
+    debugger;
     languageManager.addToTranslation(this, translation);
   }
   openCamera = () => {
@@ -34,10 +35,11 @@ export default class ImageActionPicker extends React.Component {
   };
 
   onChangeUserAvatar = image => {
-    navManager.closeModal(this.props.callback,image);
+    debugger;
+    navManager.closeScreen(this.props.callback, image);
   };
   closePicker = () => {
-      navManager.closeModal();
+    navManager.closeScreen();
   };
   render() {
     return (

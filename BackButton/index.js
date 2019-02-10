@@ -7,14 +7,7 @@ import { languageManager, navManager } from "@app-sdk/services";
 
 const BackButton = ({ children, ...props }) => {
   backNavigate = p => {
-    //navManager.openScreen("Home");
-    if (p.screen) {
-      navManager.closeScreen();
-    } else if (p.modal) {
-      navManager.closeModal();
-    } else {
-      navManager.closeScreen();
-    }
+    navManager.closeScreen();
   };
   const backIconName =
     languageManager.getCurrentLayout() == "rtl" ? "arrow-right" : "arrow-left";
