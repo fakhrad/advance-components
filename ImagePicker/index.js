@@ -1,4 +1,5 @@
 import React from "react";
+import { Alert } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome5";
 import ImagePicker from "react-native-image-crop-picker";
 
@@ -12,7 +13,6 @@ import { languageManager, navManager } from "@app-sdk/services";
 export default class ImageActionPicker extends React.Component {
   constructor(props) {
     super(props);
-    debugger;
     languageManager.addToTranslation(this, translation);
   }
   openCamera = () => {
@@ -20,22 +20,25 @@ export default class ImageActionPicker extends React.Component {
       width: 300,
       height: 400,
       cropping: true
-    }).then(image => {
-      this.onChangeUserAvatar(image);
-    });
+    })
+      .then(image => {
+        this.onChangeUserAvatar(image);
+      })
+      .catch(() => {});
   };
   openLibrary = () => {
     ImagePicker.openPicker({
       width: 300,
       height: 400,
       cropping: true
-    }).then(image => {
-      this.onChangeUserAvatar(image);
-    });
+    })
+      .then(image => {
+        this.onChangeUserAvatar(image);
+      })
+      .catch(() => {});
   };
 
   onChangeUserAvatar = image => {
-    debugger;
     navManager.closeScreen(this.props.callback, image);
   };
   closePicker = () => {
@@ -43,7 +46,11 @@ export default class ImageActionPicker extends React.Component {
   };
   render() {
     return (
-      <Container style={styles.modalContainer}>
+      <Container
+        style={styles.modalContainer}
+        animation="fadeInUp"
+        duration={200}
+      >
         <Container style={styles.modalTopContainer}>
           <Container style={styles.modalTopTextContainer}>
             <Text style={styles.modalTopText}>

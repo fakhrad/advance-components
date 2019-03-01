@@ -6,29 +6,21 @@ import styles from "./style";
 import { languageManager, navManager } from "@app-sdk/services";
 
 const BackButton = ({ children, ...props }) => {
-  backNavigate = p => {
+  const backNavigate = () => {
     navManager.closeScreen();
   };
-  const backIconName =
-    languageManager.getCurrentLayout() == "rtl" ? "arrow-right" : "arrow-left";
-  let myStyle = {
-    width: 40,
-    height: 40,
-    borderRadius: 100,
-    backgroundColor: "transparent",
-    alignItems: "center",
-    justifyContent: "center",
-    position: "absolute",
-    left: 0,
-    zIndex: 100
-  };
+  const backIconName = languageManager.isRTL ? "arrow-right" : "arrow-left";
+  let iconStyle = {};
+  if (props.style != undefined && props.style.color) {
+    iconStyle["color"] = props.style.color;
+  }
   return (
     <Button
       {...props}
-      style={[myStyle, props.style]}
-      onPress={() => this.backNavigate(props)}
+      style={[styles.btn, props.style]}
+      onPress={() => backNavigate()}
     >
-      <Icon name={backIconName} style={styles.icon} />
+      <Icon name={backIconName} style={[styles.icon, iconStyle]} />
     </Button>
   );
 };
